@@ -31,10 +31,10 @@
       </div>
       <div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
-          <div class="col-md-6">
-            <img src="<?= base_url('assets/images/profile/').$user['image']; ?>" class="img-fluid rounded-start" alt="...">
+          <div class="col-md-5">
+            <img width="250px" src="<?= base_url('assets/images/profile/') . $user['image']; ?>" class="img-fluid rounded-start">
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="card-body">
               <th>
                 <h3>
@@ -49,7 +49,15 @@
                 </h5>
               </th>
               <p class="card-text"><small class="text-muted">As a Member since <?= date('d F Y', $user['date_created']); ?> </small></p>
-              <a class="btn btn-secondary" href="<?= base_url('User/editprofile'); ?>">Edit Profile</a>
+              <div class="row">
+                <div class="col-sm-5">
+                  <a class="btn btn-secondary" href="<?= base_url('User/editprofile'); ?>">Edit Profile</a>
+                </div>
+                <div class="col-sm-7">
+                  <a class="btn btn-secondary" href="<?= base_url('User/changepassword'); ?>">Change Password</a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

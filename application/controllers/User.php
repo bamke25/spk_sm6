@@ -49,8 +49,8 @@ class User extends CI_Controller
 
                 if ($this->upload->do_upload('image')) {
                     $old_image = $data['user']['image'];
-                    if($old_image != 'default.jpg') {
-                        unlink(FCPATH . 'assets/images/profile/'. $old_image);
+                    if ($old_image != 'default.jpg') {
+                        unlink(FCPATH . 'assets/images/profile/' . $old_image);
                     }
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('image', $new_image);
@@ -78,6 +78,49 @@ class User extends CI_Controller
         $this->load->view('templates/sidebar', $data);
         $this->load->view('user/index', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function changepassword()
+    {
+        $data['title'] = 'Change Password';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('currentpassword', 'current password', 'required|trim');
+        $this->form_validation->set_rules('newpassword1', 'new password', 'required|trim|min_length[5]|matches[newpassword2]');
+        $this->form_validation->set_rules('newpassword2', 'repeat password', 'required|trim|min_length[5]|matches[newpassword1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('user/changepassword', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $currentpassword = $this->input->post('currentpassword');
+            $newpassword = $this->input->post('newpassword1');
+            if (!password_verify($currentpassword, $data['user']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Wrong current password</div>');
+                redirect('User/changepassword');
+            } else {
+                if ($currentpassword == $newpassword) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    new password cannot be the same as a current password!</div>');
+                    redirect('User/changepassword');
+                } else {
+                    //password bagus
+                    $password_hash = password_hash($newpassword, PASSWORD_DEFAULT);
+
+                    $this->db->set('password', $password_hash);
+                    $this->db->where('email', $this->session->userdata('email'));
+                    $this->db->update('user');
+
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Password change!</div>');
+                    redirect('User/profile');
+                }
+            }
+        }
     }
 
     public function hapus($id)
