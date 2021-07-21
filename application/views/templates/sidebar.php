@@ -15,7 +15,7 @@
       if ($user['role_id'] == 1) {
         echo ' 
         <div class="info">
-        <a href="' . base_url('Auth/profile') . '" class="d-block">Administrator </a>
+        <a href="' . base_url('DataChart/profile') . '" class="d-block">Administrator </a>
       </div>
         ';
       } else {
