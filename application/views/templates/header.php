@@ -46,7 +46,15 @@
               <span class="hidden-xs"><?= $user['name']; ?></span>
             </a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <?php if($user['role_id']== 1){ echo '
+              
+              <li><a class="dropdown-item" href="'.base_url('DataChart/profile').'">Profile</a></li>
+              ';
+              } else { echo '
+                <li><a class="dropdown-item" href="'.base_url('User/profile').'">Profile</a></li>
+                ';
+              }
+              ?>
               <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" href="#">Logout</a></li>
             </ul>
           </li>

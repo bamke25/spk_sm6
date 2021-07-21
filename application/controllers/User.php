@@ -186,6 +186,14 @@ class User extends CI_Controller
 
     function hitung()
     {
+        $this->form_validation->set_rules(
+            'email',
+            'email',
+            'is_unique[user.email]',
+            [
+                'is_unique' => 'Mohon maaf, hanya bisa melakukan satu kali pengujian!'
+            ]
+        );
         $this->form_validation->set_rules("nama", "Nama ", "required");
         $this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
         $this->form_validation->set_rules("berobat", "Berobat", "required");
@@ -198,6 +206,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules("penerangan", "Penerangan", "required");
         $this->form_validation->set_rules("luas_lantai_rumah", "Luas lantai rumah", "required");
         $this->form_validation->set_rules("sumber_air_minum", "Sumber air minum", "required");
+    
         if ($this->form_validation->run() == FALSE) {
             $data['ubah'] = $this->db->get_where('tbl_training', ['id_training'])->row_array();
             //$this->Uji_Model->detail_data();
