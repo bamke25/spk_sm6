@@ -25,7 +25,7 @@
         </div>
         <div class="row">
           <div class="col-xs-8">
-            <a href="#">I forgot my password</a><br>
+            <!-- <a href="#">I forgot my password</a><br> -->
             <a href="<?= base_url('auth/registration'); ?>" class="text-center">Register a new membership</a>
           </div>
           <!-- /.col -->
