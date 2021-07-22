@@ -37,8 +37,8 @@
         <?php if ($user['role_id'] == 1) {
           echo
 
-          '<li class="nav-item has-treeview menu-open">
-        <a href="' . base_url('DataChart') . '" class="nav-link active">
+          '<li class="nav-item ">
+        <a href="' . base_url('DataChart') . '" class="nav-link ">
           <i class="nav-icon fa-fw fas fa-th"></i>
           <p>
             Dashboard

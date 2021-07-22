@@ -227,7 +227,7 @@ class User extends CI_Controller
             $jumlah_layak = $this->Training_Model->count_layak();
             $jumlah_tidak_layak = $this->Training_Model->count_tidaklayak();
             $total_training = $jumlah_layak + $jumlah_tidak_layak;
-            $kesejahteraan_sosial = $this->Training_Model->kesejahteraan_sosial($this->input->post('kesejahteraan_sosial()'));
+            $kesejahteraan_sosial = $this->Training_Model->kesejahteraan_sosial($this->input->post('kesejahteraan_sosial'));
             $pekerjaan = $this->Training_Model->pekerjaan($this->input->post('pekerjaan'));
             $berobat = $this->Training_Model->berobat($this->input->post('berobat'));
             $pengeluaran = $this->Training_Model->pengeluaran($this->input->post('pengeluaran'));
