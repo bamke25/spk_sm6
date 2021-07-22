@@ -67,6 +67,7 @@
                         <option value="Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak">Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak</option>
                         <option value="Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga">Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga</option>
                         <option value="Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga">Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga</option>
+                        <option value="lain-lain">lain-lain</option>
                       </select>
                     </div>
                     <div class="form-group">
