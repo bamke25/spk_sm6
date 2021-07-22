@@ -68,7 +68,7 @@
                     <html>
 
                     <head>
-                      <title>Naive Bayes</title>
+                      <title><?= $title ?></title>
                       <!-- Load file plugin Chart.js -->
                       <script src="<?php echo base_url() ?>/assets/Chart.js"></script>
                     </head>

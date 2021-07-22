@@ -11,6 +11,7 @@ class DataChart extends CI_Controller {
 
 	function index()
 	{
+        $data['title'] = 'Dashboard';
 		$data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 		$data['total'] =  $this->Chart_Model->total_rows();
@@ -24,6 +25,7 @@ class DataChart extends CI_Controller {
 
 	public function profile()
     {
+        $data['title'] = 'profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->load->view('templates/header', $data);
@@ -34,6 +36,7 @@ class DataChart extends CI_Controller {
 
     public function editprofile()
     {
+        $data['title'] = 'edit profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('name', 'Nama', 'required|trim');

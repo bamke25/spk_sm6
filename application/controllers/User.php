@@ -15,6 +15,7 @@ class User extends CI_Controller
 
     public function profile()
     {
+        $data['title'] = 'Profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->load->view('templates/header', $data);
@@ -25,6 +26,7 @@ class User extends CI_Controller
 
     public function editprofile()
     {
+        $data['title'] = 'Edit Profile';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $this->form_validation->set_rules('name', 'Nama', 'required|trim');
@@ -71,6 +73,7 @@ class User extends CI_Controller
 
     function index()
     {
+        $data['title'] = 'Data Uji';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['training'] = $this->Uji_Model->getAllData();
@@ -82,6 +85,7 @@ class User extends CI_Controller
 
     public function changepassword()
     {
+        $data['title'] = 'Ubah Password';
         $data['title'] = 'Change Password';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
@@ -132,6 +136,7 @@ class User extends CI_Controller
 
     public function detail($id)
     {
+        $data['title'] = 'Detail Data';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['detail'] = $this->Uji_Model->detail_data($id);
@@ -143,6 +148,7 @@ class User extends CI_Controller
 
     public function ubah($id)
     {
+        $data['title'] = 'Update Data';
         $this->form_validation->set_rules("nama", "Nama ", "required");
         $this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan sosial", "required");
         $this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
@@ -175,6 +181,7 @@ class User extends CI_Controller
 
     function pengujian()
     {
+        $data['title'] = 'Pengujian';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['training'] = $this->Training_Model->getAllData();

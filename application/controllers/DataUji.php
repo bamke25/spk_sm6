@@ -16,6 +16,7 @@ class DataUji extends CI_Controller
 
 	function index()
 	{
+		$data['title'] = 'Data Uji';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['training'] = $this->Uji_Model->getAllData();
@@ -27,6 +28,7 @@ class DataUji extends CI_Controller
 
 	function pengujian()
 	{
+		$data['title'] = 'Pengujian';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['training'] = $this->Training_Model->getAllData();
@@ -45,6 +47,7 @@ class DataUji extends CI_Controller
 
 	public function detail($id)
 	{
+		$data['title'] = 'Detail Data';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['detail'] = $this->Uji_Model->detail_data($id);
@@ -56,6 +59,7 @@ class DataUji extends CI_Controller
 
 	public function ubah($id)
 	{
+		$data['title'] = 'Update Data';
 		$this->form_validation->set_rules("nama", "Nama ", "required");
 		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial ", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");

@@ -14,6 +14,7 @@ class DataTraining extends CI_Controller
 	
 	function index()
 	{
+		$data['title'] = 'Data Training';
 		$data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 		$data['training'] = $this->Training_Model->getAllData();
@@ -62,6 +63,7 @@ class DataTraining extends CI_Controller
 
 	public function ubah($id)
 	{
+		$data['title'] = 'Update Data';
 		// $this->form_validation->set_rules("id_training", "Id Training", "required|max_length[5]");
 		$this->form_validation->set_rules("nama", "Nama ", "required");
 		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial", "required");
