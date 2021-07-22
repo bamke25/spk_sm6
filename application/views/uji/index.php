@@ -38,7 +38,8 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <!-- <th>Pekerjaan</th>
+                  <!-- <th>Kesejahteraan Sosial</th>
+                  <th>Pekerjaan</th>
                   <th>Berobat</th>
                   <th>Pengeluaran</th>
                   <th>Pakaian</th>
@@ -60,7 +61,8 @@
                   <tr>
                     <td><?= $no ?></td>
                     <td><?= $row['Nama']; ?></td>
-                    <!-- <td><?= $row['Pekerjaan']; ?></td>
+                    <!-- <td><?= $row['Kesejahteraan_Sosial']; ?></td>
+                    <td><?= $row['Pekerjaan']; ?></td>
                     <td><?= $row['Berobat']; ?></td>
                     <td><?= $row['Pengeluaran']; ?></td>
                     <td><?= $row['Pakaian']; ?></td>
@@ -76,7 +78,7 @@
                       
                         <div class="btn-group">
                           <a class='btn btn-success btn-xs' title='Detail Data' href="<?= base_url('DataUji/detail/'); ?><?= $row['id_training']; ?>"><span class='glyphicon glyphicon-search'></span>Detail</a>
-                          <a class='btn btn-warning btn-xs' title='Edit Data' href="<?= base_url('DataUji/ubah/'); ?><?= $row['id_training']; ?>"><span class='glyphicon glyphicon-edit'></span>edit</a>
+                          <!-- <a class='btn btn-warning btn-xs' title='Edit Data' href="<?= base_url('DataUji/ubah/'); ?><?= $row['id_training']; ?>"><span class='glyphicon glyphicon-edit'></span>edit</a> -->
                           <a class='btn btn-danger btn-xs' title='Delete Data' href="<?= base_url('DataUji/hapus/'); ?><?= $row['id_training']; ?>" onclick="return confirm('Apa anda yakin untuk hapus Data ini?')"><span class='glyphicon glyphicon-remove'></span>hapus</a>
                         </div>
                       

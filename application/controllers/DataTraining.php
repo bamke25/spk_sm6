@@ -25,6 +25,7 @@ class DataTraining extends CI_Controller
 
 	public function validation_form(){
 		$this->form_validation->set_rules("nama", "Nama ", "required");
+		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
 		$this->form_validation->set_rules("berobat", "Berobat", "required");
 		$this->form_validation->set_rules("pengeluaran", "Pengeluaran", "required");
@@ -63,6 +64,7 @@ class DataTraining extends CI_Controller
 	{
 		// $this->form_validation->set_rules("id_training", "Id Training", "required|max_length[5]");
 		$this->form_validation->set_rules("nama", "Nama ", "required");
+		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
 		$this->form_validation->set_rules("berobat", "Berobat", "required");
 		$this->form_validation->set_rules("pengeluaran", "Pengeluaran", "required");

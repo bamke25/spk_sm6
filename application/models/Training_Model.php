@@ -12,19 +12,10 @@ class Training_Model extends CI_Model
 
 	public function tambah_data()
 	{
-		// $jumlah_penghasilan = $this->input->post('jml_penghasilan', true);
-
-		// if ($jumlah_penghasilan > 2500000) {
-		// 	$kat = "tinggi";
-		// }else if($jumlah_penghasilan >= 1500000 && $jumlah_penghasilan <= 2500000){
-		// 	$kat = "sedang";
-		// }else if($jumlah_penghasilan < 1500000){
-		// 	$kat = "rendah";
-		// }
-
 		$data = array(
 			// 'id_training' => $this->input->post('id_training', true),
 			'Nama' => $this->input->post('nama', true),
+			'Kesejahteraan_Sosial' => $this->input->post('kesejahteraan_sosial', true),
 			'Pekerjaan' => $this->input->post('pekerjaan', true),
 			'Berobat' => $this->input->post('berobat', true),
 			'Pengeluaran' => $this->input->post('pengeluaran', true),
@@ -46,6 +37,7 @@ class Training_Model extends CI_Model
 	{
 		$data = array(
 			'Nama' => $this->input->post('nama', true),
+			'Kesejahteraan_Sosial' => $this->input->post('kesejahteraan_sosial', true),
 			'Pekerjaan' => $this->input->post('pekerjaan', true),
 			'Berobat' => $this->input->post('berobat', true),
 			'Pengeluaran' => $this->input->post('pengeluaran', true),
@@ -87,7 +79,19 @@ class Training_Model extends CI_Model
 		return $this->db->count_all_results();
 	}
 
-	// ambil probabilitas Pekerjaan
+	// ambil probabilitas
+	public function kesejahteraan_sosial($status)
+	{
+		$this->db->where('Kesejahteraan_Sosial', $status);
+		$this->db->where('status_kelayakan', "Layak");
+		$this->db->from('tbl_training');
+		$layak = $this->db->count_all_results() / $this->count_layak();
+		$this->db->where('Kesejahteraan_Sosial', $status);
+		$this->db->where('status_kelayakan', "Tidak Layak");
+		$this->db->from('tbl_training');
+		$tidak = $this->db->count_all_results() / $this->count_tidaklayak();
+		return array('layak' => $layak, 'tidaklayak' => $tidak);
+	}
 	public function pekerjaan($status)
 	{
 		$this->db->where('Pekerjaan', $status);

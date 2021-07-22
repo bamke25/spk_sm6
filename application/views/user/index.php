@@ -38,7 +38,8 @@
                 <tr>
                   <th>No</th>
                   <th>Nama</th>
-                  <!-- <th>Pekerjaan</th>
+                  <!-- <th>Kesejahteraan Sosial</th>
+                  <th>Pekerjaan</th>
                   <th>Berobat</th>
                   <th>Pengeluaran</th>
                   <th>Pakaian</th>
@@ -60,7 +61,8 @@
                   <tr>
                     <td><?= $no ?></td>
                     <td><?= $row['Nama']; ?></td>
-                    <!-- <td><?= $row['Pekerjaan']; ?></td>
+                    <!-- <td><?= $row['Kesejahteraan_Sosial']; ?></td>
+                    <td><?= $row['Pekerjaan']; ?></td>
                     <td><?= $row['Berobat']; ?></td>
                     <td><?= $row['Pengeluaran']; ?></td>
                     <td><?= $row['Pakaian']; ?></td>

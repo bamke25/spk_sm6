@@ -15,6 +15,7 @@ class Uji_Model extends CI_Model
 		$data = array(
 			// 'id_training' => $this->input->post('id_training', true),
 			'Nama' => $this->input->post('nama', true),
+			'Kesejahteraan_Sosial' => $this->input->post('kesejahteraan_sosial', true),
 			'Pekerjaan' => $this->input->post('pekerjaan', true),
 			'Berobat' => $this->input->post('berobat', true),
 			'Pengeluaran' => $this->input->post('pengeluaran', true),
@@ -32,10 +33,12 @@ class Uji_Model extends CI_Model
 		$this->db->insert('tbl_training2', $data);
 	}
 
-	public function ubah_data()
+	public function ubah_data($kesimpulan)
 	{
+		$pekerjaan = $this->input->post('pekerjaan');
 		$data = array(
 			'Nama' => $this->input->post('nama', true),
+			'Kesejahteraan_Sosial' => $this->input->post('kesejahteraan_sosial', true),
 			'Pekerjaan' => $this->input->post('pekerjaan', true),
 			'Berobat' => $this->input->post('berobat', true),
 			'Pengeluaran' => $this->input->post('pengeluaran', true),
@@ -47,7 +50,7 @@ class Uji_Model extends CI_Model
 			'Penerangan' => $this->input->post('penerangan', true),
 			'Luas_Lantai_Rumah' => $this->input->post('luas_lantai_rumah', true),
 			'Sumber_Air_Minum' => $this->input->post('sumber_air_minum', true),
-			'status_kelayakan' => $this->input->post('status_kelayakan', true)
+			'status_kelayakan' => $kesimpulan
 		);
 		$this->db->where('id_training', $this->input->post('id_training', true));
 		$this->db->update('tbl_training2', $data);

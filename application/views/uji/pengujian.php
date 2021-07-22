@@ -55,11 +55,20 @@
             <div class="row">
               <div class="col-md-8">
                 <?= validation_errors(); ?>
-                <form action="<?= base_url() ?>DataUji/hitung" target="_balnk" method="post" accept-charset="utf-8">
+                <form action="<?= base_url() ?>DataUji/hitung" target="_blank" method="post" accept-charset="utf-8">
                   <div class="card-body">
                     <div class="form-group">
                       <label for="nama">Nama</label>
                       <input type="text" class="form-control" id="nama" name="nama">
+                    </div>
+                    <div class="form-group">
+                      <label>Kesejahteraan Sosial</label>
+                      <select class="form-control" name="kesejahteraan_sosial">
+                        <option value="Ibu hamil, maksimal dua kali kehamilan">Ibu hamil, maksimal dua kali kehamilan</option>
+                        <option value="Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak">Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak</option>
+                        <option value="Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga">Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga</option>
+                        <option value="Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga">Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Pekerjaan</label>
@@ -95,6 +104,10 @@
                       <select class="form-control" name="pendidikan_anak">
                         <option value="Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama">Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama</option>
                         <option value="Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama">Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama</option>
+                        <option value="Anak Sekolah Dasar(SD), Madrasah Ibtidaiyah(MI) atau sederajat">Anak Sekolah Dasar(SD), Madrasah Ibtidaiyah(MI) atau sederajat</option>
+                        <option value="Anak Sekolah Menengah Pertama(SMP), Madrasah Tsanawiyah(Mts) atau sederajat">Anak Sekolah Menengah Pertama(SMP), Madrasah Tsanawiyah(Mts) atau sederajat</option>
+                        <option value="Anak Sekolah Menengah Atas(SMA), Madrasah Aliyah atau sederajat">Anak Sekolah Menengah Atas(SMA), Madrasah Aliyah atau sederajat</option>
+                        <option value="Anak usia 6 s/d 21 tahun yang belum menyelesaikan wajib belajar 12 tahun">Anak usia 6 s/d 21 tahun yang belum menyelesaikan wajib belajar 12 tahun</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -162,11 +175,20 @@
             <div class="row">
               <div class="col-md-8">
                 <?= validation_errors(); ?>
-                <form action="<?= base_url() ?>DataUji/hitungsimpan" target="_balnk" method="post" accept-charset="utf-8">
+                <form action="<?= base_url() ?>DataUji/hitungsimpan" target="_blank" method="post" accept-charset="utf-8">
                   <div class="card-body">
                     <div class="form-group">
                       <label for="nama">Nama</label>
                       <input type="text" class="form-control" id="nama" name="nama">
+                    </div>
+                    <div class="form-group">
+                      <label>Kesejahteraan Sosial</label>
+                      <select class="form-control" name="kesejahteraan_sosial">
+                        <option value="Ibu hamil, maksimal dua kali kehamilan">Ibu hamil, maksimal dua kali kehamilan</option>
+                        <option value="Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak">Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak</option>
+                        <option value="Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga">Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga</option>
+                        <option value="Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga">Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga</option>
+                      </select>
                     </div>
                     <div class="form-group">
                       <label>Pekerjaan</label>
@@ -202,6 +224,10 @@
                       <select class="form-control" name="pendidikan_anak">
                         <option value="Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama">Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama</option>
                         <option value="Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama">Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama</option>
+                        <option value="Anak Sekolah Dasar(SD), Madrasah Ibtidaiyah(MI) atau sederajat">Anak Sekolah Dasar(SD), Madrasah Ibtidaiyah(MI) atau sederajat</option>
+                        <option value="Anak Sekolah Menengah Pertama(SMP), Madrasah Tsanawiyah(Mts) atau sederajat">Anak Sekolah Menengah Pertama(SMP), Madrasah Tsanawiyah(Mts) atau sederajat</option>
+                        <option value="Anak Sekolah Menengah Atas(SMA), Madrasah Aliyah atau sederajat">Anak Sekolah Menengah Atas(SMA), Madrasah Aliyah atau sederajat</option>
+                        <option value="Anak usia 6 s/d 21 tahun yang belum menyelesaikan wajib belajar 12 tahun">Anak usia 6 s/d 21 tahun yang belum menyelesaikan wajib belajar 12 tahun</option>
                       </select>
                     </div>
                     <div class="form-group">

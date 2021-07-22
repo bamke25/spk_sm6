@@ -29,6 +29,7 @@
         <table class='table table-condensed table-bordered'>
             <tbody>
             <tr><th scope='row'>Nama</th> <td><?php echo $detail['Nama']?></td></tr>
+            <tr><th scope='row'>Kesejahteraan Sosial</th> <td><?php echo $detail['Kesejahteraan_Sosial']?></td></tr>
             <tr><th scope='row'>Pekerjaan</th> <td><?php echo $detail['Pekerjaan']?></td></tr>
             <tr><th scope='row'>Berobat</th> <td><?php echo $detail['Berobat']?></td></tr>
             <tr><th scope='row'>Pengeluaran</th> <td><?php echo $detail['Pengeluaran']?></td></tr>

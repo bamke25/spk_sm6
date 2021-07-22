@@ -57,6 +57,7 @@ class DataUji extends CI_Controller
 	public function ubah($id)
 	{
 		$this->form_validation->set_rules("nama", "Nama ", "required");
+		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial ", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
 		$this->form_validation->set_rules("berobat", "Berobat", "required");
 		$this->form_validation->set_rules("pengeluaran", "Pengeluaran", "required");
@@ -88,6 +89,7 @@ class DataUji extends CI_Controller
 	function hitung()
 	{
 		$this->form_validation->set_rules("nama", "Nama ", "required");
+		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial ", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
 		$this->form_validation->set_rules("berobat", "Berobat", "required");
 		$this->form_validation->set_rules("pengeluaran", "Pengeluaran", "required");
@@ -100,15 +102,16 @@ class DataUji extends CI_Controller
 		$this->form_validation->set_rules("luas_lantai_rumah", "Luas lantai rumah", "required");
 		$this->form_validation->set_rules("sumber_air_minum", "Sumber air minum", "required");
 		if ($this->form_validation->run() == FALSE) {
-			$data['ubah'] = $this->db->get_where('tbl_training', ['id_training'])->row_array();
+			$data['ubah'] = $this->db->get_where('tbl_training2', ['id_training'])->row_array();
 			//$this->Uji_Model->detail_data();
 			$data['user'] = $this->db->get_where('user', ['email' =>
 			$this->session->userdata('email')])->row_array();
 			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar', $data);
-			$this->load->view('uji/ubah', $data);
+			$this->load->view('uji/ubahsaja', $data);
 			$this->load->view('templates/footer');
 		} else {
+			$kesejahteraan_sosial = array();
 			$pekerjaan = array();
 			$berobat = array();
 			$pengeluaran = array();
@@ -124,6 +127,7 @@ class DataUji extends CI_Controller
 			$jumlah_layak = $this->Training_Model->count_layak();
 			$jumlah_tidak_layak = $this->Training_Model->count_tidaklayak();
 			$total_training = $jumlah_layak + $jumlah_tidak_layak;
+			$kesejahteraan_sosial = $this->Training_Model->kesejahteraan_sosial($this->input->post('kesejahteraan_sosial'));
 			$pekerjaan = $this->Training_Model->pekerjaan($this->input->post('pekerjaan'));
 			$berobat = $this->Training_Model->berobat($this->input->post('berobat'));
 			$pengeluaran = $this->Training_Model->pengeluaran($this->input->post('pengeluaran'));
@@ -162,9 +166,9 @@ class DataUji extends CI_Controller
 			$PC1 = round($jumlah_layak / ($jumlah_tidak_layak + $jumlah_layak), 2);
 			$PC0 = round($jumlah_tidak_layak / ($jumlah_tidak_layak + $jumlah_layak), 2);
 
-			$kelas_layak = round($pekerjaan['layak'], 2) * round($berobat['layak'], 2) * round($pengeluaran['layak'], 2) * round($pakaian['layak'], 2) * round($pendidikan_anak['layak'], 2) * round($kondisi_dinding_rumah['layak'], 2) * round($kondisi_lantai_rumah['layak'], 2) * round($kondisi_atap_rumah['layak'], 2) * round($penerangan['layak'], 2) * round($luas_lantai_rumah['layak'], 2) * round($sumber_air_minum['layak'], 2) * $PC1;
+			$kelas_layak = round($kesejahteraan_sosial['layak'], 2) * round($pekerjaan['layak'], 2) * round($berobat['layak'], 2) * round($pengeluaran['layak'], 2) * round($pakaian['layak'], 2) * round($pendidikan_anak['layak'], 2) * round($kondisi_dinding_rumah['layak'], 2) * round($kondisi_lantai_rumah['layak'], 2) * round($kondisi_atap_rumah['layak'], 2) * round($penerangan['layak'], 2) * round($luas_lantai_rumah['layak'], 2) * round($sumber_air_minum['layak'], 2) * $PC1;
 
-			$kelas_tidak_layak = round($pekerjaan['tidaklayak'], 2) * round($berobat['tidaklayak'], 2) * round($pengeluaran['tidaklayak'], 2) * round($pakaian['tidaklayak'], 2) * round($pendidikan_anak['tidaklayak'], 2) * round($kondisi_dinding_rumah['tidaklayak'], 2) * round($kondisi_lantai_rumah['tidaklayak'], 2) * round($kondisi_atap_rumah['tidaklayak'], 2) * round($penerangan['tidaklayak'], 2) * round($luas_lantai_rumah['tidaklayak'], 2) * round($sumber_air_minum['tidaklayak'], 2) * $PC0;
+			$kelas_tidak_layak = round($kesejahteraan_sosial['tidaklayak'], 2) * round($pekerjaan['tidaklayak'], 2) * round($berobat['tidaklayak'], 2) * round($pengeluaran['tidaklayak'], 2) * round($pakaian['tidaklayak'], 2) * round($pendidikan_anak['tidaklayak'], 2) * round($kondisi_dinding_rumah['tidaklayak'], 2) * round($kondisi_lantai_rumah['tidaklayak'], 2) * round($kondisi_atap_rumah['tidaklayak'], 2) * round($penerangan['tidaklayak'], 2) * round($luas_lantai_rumah['tidaklayak'], 2) * round($sumber_air_minum['tidaklayak'], 2) * $PC0;
 
 			$output .= "----Hasil Probabilitas----<br>";
 			$output .= "
@@ -184,30 +188,6 @@ class DataUji extends CI_Controller
 			</table>";
 
 
-
-
-			//STEP 2
-			// $output .= "----Probabilitas Posterior----<br>";
-			// $output .= "pekerjaan : ";
-			// $output .= var_dump($pekerjaan);
-			// $output .= "<br>";
-			// $output .= "jumlah tanggungan : ";
-			// $output .= var_dump($berobat);
-			// $output .= "<br>";
-			// $output .= "pengeluaran : ";
-			// $output .= var_dump($pengeluaran);
-			// $output .= "<br>";
-			// $output .= "pakaian : ";
-			// $output .= var_dump($pakaian);
-			// $output .= "<br>";
-			// $output .= "pendidikan_anak : ";
-			// $output .= var_dump($pendidikan_anak);
-			// $output .= "<br>";
-			// $output .= "kondisi_dinding_rumah : ";
-			// $output .= var_dump($kondisi_dinding_rumah);
-			// $output .= "<br><br>";
-
-
 			//step 3
 			$output .= "----Probabilitas Data Uji----<br>";
 			$output .= "
@@ -215,6 +195,7 @@ class DataUji extends CI_Controller
 			<thead>
 			<tr>
 			<th> </th>
+			<th>Kesejahteraan Sosial</th>
 			<th>Pekerjaan</th>
 			<th>Berobat</th>
 			<th>Pengeluaran</th>
@@ -230,6 +211,7 @@ class DataUji extends CI_Controller
 			</tr>
 			<tr>
 			<td>PC1 (Layak)</th>
+			<td>" . round($kesejahteraan_sosial['layak'], 2) . "</td>
 			<td>" . round($pekerjaan['layak'], 2) . "</td>
 			<td>" . round($berobat['layak'], 2) . "</td>
 			<td>" . round($pengeluaran['layak'], 2) . "</td>
@@ -247,6 +229,7 @@ class DataUji extends CI_Controller
 
 			<tr>
 			<td>PC0 (Tidak Layak)</th>
+			<td>" . round($kesejahteraan_sosial['tidaklayak'], 2) . "</td>
 			<td>" . round($pekerjaan['tidaklayak'], 2) . "</td>
 			<td>" . round($berobat['tidaklayak'], 2) . "</td>
 			<td>" . round($pengeluaran['tidaklayak'], 2) . "</td>
@@ -263,32 +246,6 @@ class DataUji extends CI_Controller
 			</tr>
 			</thead>
 			</table>";
-
-
-			// $output .= "----Probabilitas Data Uji----<br>";
-			// $output .= "-PCO (Tidak Layak) <br> ";
-
-			// $output .= "Status PKH: ".round($pekerjaan['tidaklayak'],2);
-			// $output .= "<br>Jumlah Tanggungan: ".round($berobat['tidaklayak'], 2);
-			// $output .= "<br>Kepala Rumah Tangga: ".round($pengeluaran['tidaklayak'], 2);
-			// $output .= "<br>Kondisi Rumah: ".round($pakaian['tidaklayak'], 2);
-			// $output .= "<br>Jumlah Penghasilan: ".round($pendidikan_anak['tidaklayak'], 2);
-			// $output .= "<br>Status Rumah: ".round($kondisi_dinding_rumah['tidaklayak'], 2);
-			// $output .= "<br>Hasil Probabilitas: ";
-
-			// $output .= $kelas_tidak_layak = round($pekerjaan['tidaklayak'],2)*round($berobat['tidaklayak'], 2)*round($pengeluaran['tidaklayak'], 2)*round($pakaian['tidaklayak'], 2)*round($pendidikan_anak['tidaklayak'], 2)*round($kondisi_dinding_rumah['tidaklayak'], 2)*$PC0;
-
-			// $output .= " </br><br>";
-			// $output .= "-PC1 (Layak)<br>";
-
-			// $output .= "Status PKH: ".round($pekerjaan['layak'],2);
-			// $output .= "<br>Jumlah Tanggungan: ".round($berobat['layak'], 2);
-			// $output .= "<br>Kepala Rumah Tangga: ".round($pengeluaran['layak'], 2);
-			// $output .= "<br>Kondisi Rumah: ".round($pakaian['layak'], 2);
-			// $output .= "<br>Jumlah Penghasilan: ".round($pendidikan_anak['layak'], 2);
-			// $output .= "<br>Status Rumah: ".round($kondisi_dinding_rumah['layak'], 2);
-			// $output .= "<br> Hasil Probabilitas: ";
-			// $output .= $kelas_layak = round($pekerjaan['layak'],2)*round($berobat['layak'], 2)*round($pengeluaran['layak'], 2)*round($pakaian['layak'], 2)*round($pendidikan_anak['layak'], 2)*round($kondisi_dinding_rumah['layak'], 2)*$PC1;
 
 			$kesimpulan = "";
 			$operator = "";
@@ -307,7 +264,7 @@ class DataUji extends CI_Controller
 
 
 			$output .= "Kelas Layak(PC1)" . ' ' . $operator . ' ' . "Kelas Tidak Layak(PC0)
-			<br>Dapat disimpulkan Bahwa Data Uji tersebut <b><u>" . $kesimpulan . "</u></b> Untuk menerima Beras Rastra
+			<br>Dapat disimpulkan Bahwa Data Uji tersebut <b><u>" . $kesimpulan . "</u></b> Untuk menerima bantuan PKH
 			<br> 
 			";
 
@@ -324,6 +281,7 @@ class DataUji extends CI_Controller
 	function hitungsimpan()
 	{
 		$this->form_validation->set_rules("nama", "Nama ", "required");
+		$this->form_validation->set_rules("kesejahteraan_sosial", "Kesejahteraan Sosial ", "required");
 		$this->form_validation->set_rules("pekerjaan", "Pekerjaan", "required");
 		$this->form_validation->set_rules("berobat", "Berobat", "required");
 		$this->form_validation->set_rules("pengeluaran", "Pengeluaran", "required");
@@ -336,7 +294,7 @@ class DataUji extends CI_Controller
 		$this->form_validation->set_rules("luas_lantai_rumah", "Luas lantai rumah", "required");
 		$this->form_validation->set_rules("sumber_air_minum", "Sumber air minum", "required");
 		if ($this->form_validation->run() == FALSE) {
-			$data['ubah'] = $this->db->get_where('tbl_training', ['id_training'])->row_array();
+			$data['ubah'] = $this->db->get_where('tbl_training2', ['id_training'])->row_array();
 			//$this->Uji_Model->detail_data();
 			$data['user'] = $this->db->get_where('user', ['email' =>
 			$this->session->userdata('email')])->row_array();
@@ -345,6 +303,7 @@ class DataUji extends CI_Controller
 			$this->load->view('uji/ubah', $data);
 			$this->load->view('templates/footer');
 		} else {
+			$kesejahteraan_sosial = array();
 			$pekerjaan = array();
 			$berobat = array();
 			$pengeluaran = array();
@@ -360,6 +319,7 @@ class DataUji extends CI_Controller
 			$jumlah_layak = $this->Training_Model->count_layak();
 			$jumlah_tidak_layak = $this->Training_Model->count_tidaklayak();
 			$total_training = $jumlah_layak + $jumlah_tidak_layak;
+			$kesejahteraan_sosial = $this->Training_Model->kesejahteraan_sosial($this->input->post('kesejahteraan_sosial'));
 			$pekerjaan = $this->Training_Model->pekerjaan($this->input->post('pekerjaan'));
 			$berobat = $this->Training_Model->berobat($this->input->post('berobat'));
 			$pengeluaran = $this->Training_Model->pengeluaran($this->input->post('pengeluaran'));
@@ -398,9 +358,9 @@ class DataUji extends CI_Controller
 			$PC1 = round($jumlah_layak / ($jumlah_tidak_layak + $jumlah_layak), 2);
 			$PC0 = round($jumlah_tidak_layak / ($jumlah_tidak_layak + $jumlah_layak), 2);
 
-			$kelas_layak = round($pekerjaan['layak'], 2) * round($berobat['layak'], 2) * round($pengeluaran['layak'], 2) * round($pakaian['layak'], 2) * round($pendidikan_anak['layak'], 2) * round($kondisi_dinding_rumah['layak'], 2) * round($kondisi_lantai_rumah['layak'], 2) * round($kondisi_atap_rumah['layak'], 2) * round($penerangan['layak'], 2) * round($luas_lantai_rumah['layak'], 2) * round($sumber_air_minum['layak'], 2) * $PC1;
+			$kelas_layak = round($kesejahteraan_sosial['layak'], 2) * round($pekerjaan['layak'], 2) * round($berobat['layak'], 2) * round($pengeluaran['layak'], 2) * round($pakaian['layak'], 2) * round($pendidikan_anak['layak'], 2) * round($kondisi_dinding_rumah['layak'], 2) * round($kondisi_lantai_rumah['layak'], 2) * round($kondisi_atap_rumah['layak'], 2) * round($penerangan['layak'], 2) * round($luas_lantai_rumah['layak'], 2) * round($sumber_air_minum['layak'], 2) * $PC1;
 
-			$kelas_tidak_layak = round($pekerjaan['tidaklayak'], 2) * round($berobat['tidaklayak'], 2) * round($pengeluaran['tidaklayak'], 2) * round($pakaian['tidaklayak'], 2) * round($pendidikan_anak['tidaklayak'], 2) * round($kondisi_dinding_rumah['tidaklayak'], 2) * round($kondisi_lantai_rumah['tidaklayak'], 2) * round($kondisi_atap_rumah['tidaklayak'], 2) * round($penerangan['tidaklayak'], 2) * round($luas_lantai_rumah['tidaklayak'], 2) * round($sumber_air_minum['tidaklayak'], 2) * $PC0;
+			$kelas_tidak_layak = round($kesejahteraan_sosial['tidaklayak'], 2) * round($pekerjaan['tidaklayak'], 2) * round($berobat['tidaklayak'], 2) * round($pengeluaran['tidaklayak'], 2) * round($pakaian['tidaklayak'], 2) * round($pendidikan_anak['tidaklayak'], 2) * round($kondisi_dinding_rumah['tidaklayak'], 2) * round($kondisi_lantai_rumah['tidaklayak'], 2) * round($kondisi_atap_rumah['tidaklayak'], 2) * round($penerangan['tidaklayak'], 2) * round($luas_lantai_rumah['tidaklayak'], 2) * round($sumber_air_minum['tidaklayak'], 2) * $PC0;
 
 			$output .= "----Hasil Probabilitas----<br>";
 			$output .= "
@@ -451,6 +411,7 @@ class DataUji extends CI_Controller
 			<thead>
 			<tr>
 			<th> </th>
+			<th>Kesejahteraan Sosial</th>
 			<th>Pekerjaan</th>
 			<th>Berobat</th>
 			<th>Pengeluaran</th>
@@ -466,6 +427,7 @@ class DataUji extends CI_Controller
 			</tr>
 			<tr>
 			<td>PC1 (Layak)</th>
+			<td>" . round($kesejahteraan_sosial['layak'], 2) . "</td>
 			<td>" . round($pekerjaan['layak'], 2) . "</td>
 			<td>" . round($berobat['layak'], 2) . "</td>
 			<td>" . round($pengeluaran['layak'], 2) . "</td>
@@ -483,6 +445,7 @@ class DataUji extends CI_Controller
 
 			<tr>
 			<td>PC0 (Tidak Layak)</th>
+			<td>" . round($kesejahteraan_sosial['tidaklayak'], 2) . "</td>
 			<td>" . round($pekerjaan['tidaklayak'], 2) . "</td>
 			<td>" . round($berobat['tidaklayak'], 2) . "</td>
 			<td>" . round($pengeluaran['tidaklayak'], 2) . "</td>
@@ -543,7 +506,7 @@ class DataUji extends CI_Controller
 
 
 			$output .= "Kelas Layak(PC1)" . ' ' . $operator . ' ' . "Kelas Tidak Layak(PC0)
-			<br>Dapat disimpulkan Bahwa Data Uji tersebut <b><u>" . $kesimpulan . "</u></b> Untuk menerima Beras Rastra
+			<br>Dapat disimpulkan Bahwa Data Uji tersebut <b><u>" . $kesimpulan . "</u></b> Untuk menerima bantuan PKH
 			<br> 
 			";
 
@@ -552,7 +515,7 @@ class DataUji extends CI_Controller
 			// $this->session->set_flashdata('flash_uji', 'dihitung');
 			// $this->session->set_flashdata('flash_hitung', $output);
 			echo $output;
-			//redirect('DataUji/pengujian');
+			// redirect('DataUji');
 		}
 	}
 }

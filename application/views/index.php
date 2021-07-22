@@ -56,7 +56,7 @@
                           </b></p>
                       </div>
                       <div class='icon'><i class='fa fa-newspaper-o'></i></div>
-                      <a href="<?= base_url() ?>DataTraining" class='small-box-footer'>Selengkapnya <i class='fa fa-arrow-circle-right'></i></a>
+                      <a href="<?= base_url() ?>DataUji" class='small-box-footer'>Selengkapnya <i class='fa fa-arrow-circle-right'></i></a>
                     </div>
                   </div>
                   <div class="col-md-1">
