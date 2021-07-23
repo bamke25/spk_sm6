@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 22 Jul 2021 pada 05.10
+-- Waktu pembuatan: 23 Jul 2021 pada 02.42
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spknbv1`
+-- Database: `spk_bansos`
 --
 
 -- --------------------------------------------------------
@@ -54,9 +54,13 @@ INSERT INTO `tbl_training` (`id_training`, `Nama`, `Kesejahteraan_Sosial`, `Peke
 (174, 'dua', 'Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'layak'),
 (175, 'tiga', 'Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'layak'),
 (176, 'empat', 'Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'layak'),
-(177, 'lima', 'Ibu hamil, maksimal dua kali kehamilan', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'tidak layak'),
-(178, 'enam', 'Ibu hamil, maksimal dua kali kehamilan', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'tidak layak'),
-(179, 'tujuh', 'Ibu hamil, maksimal dua kali kehamilan', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak');
+(177, 'lima', 'Bukan seorang ibu rumah tangga', 'Tidak Memiliki Pekerjaan', 'Tidak mampu berobat', 'Hanya makanan pokok secara sederhana', 'Tidak mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Hanya mampu menyekolahkan anak sampai jenjang pendidikan sekolah lanjutan tingkat pertama', 'Dinding rumah dari bambu/kayu/tembok dengan kondisi tidak baik', 'Atap dari ijuk/rumbia atau genteng/seng/asbes dengan kondisi tidak baik', 'Lantai dari tanah atau kayu/semen/keramik dengan kondisi tidak baik', 'Mempunyai penerengan bukan dari listrik atau listrik tanpa meteran', 'Luas lantai rumah kecil kurang dari 8m/orang', 'Dari sumur atau mata air tak terlindung/air sungai/air hujan/lainnya', 'layak'),
+(178, 'enam', 'Bukan seorang ibu rumah tangga', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak'),
+(179, 'tujuh', 'Ibu hamil, maksimal dua kali kehamilan', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak'),
+(180, 'delapan', 'Seorang Ibu yg memiliki anak usia 0 sampai dengan 6 tahun, maksimal dua anak', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak'),
+(181, 'sembilan', 'Lanjut usia mulai 60 tahun ke atas, maksimal 1 orang dan berada dalam keluarga', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak'),
+(182, 'sepuluh', 'Penyandang disabilitas diutamakan penyandang disabilitas berat, maksimal 1 orang dan berada dalam keluarga', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Mampu menyekolahkan anak di atas sekolah lanjutan tingkat pertama', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak'),
+(183, 'duabelas', 'Ibu hamil, maksimal dua kali kehamilan', 'Memiliki Pekerjaan', 'Mampu berobat', 'Mampu untuk kebutuhan lainnya', 'Mampu membeli 1 kali dalam setahun untuk setiap anggota rumah tangga', 'Anak Sekolah Menengah Pertama(SMP), Madrasah Tsanawiyah(Mts) atau sederajat', 'Kondisi dinding rumah baik', 'Atap dari genteng/seng/asbes dengan kondisi baik ', 'Lantai dari keramik dengan kondisi baik', 'Mempunyai penerangan dari listrik dengan meteran', 'Luas lantai rumah lebih dari 8m/orang', 'Mempunyai sumber air minum PDAM', 'tidak layak');
 
 -- --------------------------------------------------------
 
@@ -112,8 +116,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(4, 'Nur', 'mazinoke25@gmail.com', 'default.jpg', '$2y$10$F4O.Uc2RWjWEZrKrh9Ztoe9XN7ziFevVWM8ZGpmUPnZKOZ2ArI3g6', 1, 1, 1625060407),
-(8, 'Jamal', 'mazinoke26@gmail.com', 'pasphoto.jpg', '$2y$10$Z.HhdMrG/CKXhrc/W4XDs.SFvOdqM4ZxHWlegRM/SRBMLYIQIq8Z.', 2, 1, 1625211511);
+(4, 'Admin', 'admin@gmail.com', 'foto.jpg', '$2y$10$F4O.Uc2RWjWEZrKrh9Ztoe9XN7ziFevVWM8ZGpmUPnZKOZ2ArI3g6', 1, 1, 1625060407),
+(8, 'Member', 'member@gmail.com', 'foto.jpg', '$2y$10$Z.HhdMrG/CKXhrc/W4XDs.SFvOdqM4ZxHWlegRM/SRBMLYIQIq8Z.', 2, 1, 1625211511);
 
 -- --------------------------------------------------------
 
@@ -170,7 +174,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT untuk tabel `tbl_training`
 --
 ALTER TABLE `tbl_training`
-  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id_training` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_training2`
